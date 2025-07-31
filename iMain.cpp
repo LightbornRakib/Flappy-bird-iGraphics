@@ -1270,16 +1270,15 @@ case LEVEL_SELECT: {
 
 
     case GAME: {
+    
 
           int minutes = elapsedTimeMs / 60000;
         int seconds = (elapsedTimeMs / 1000) % 60;
         char timeStr[16];
         sprintf(timeStr, "%02d:%02d", minutes, seconds);
         std::string levelStr = (currentDifficulty == HARD) ? "Hard" : (currentDifficulty == MEDIUM) ? "Medium" : "Easy";
-        std::string scoreText = "Score: " + levelStr + " " + std::to_string(score) + " Time: " + timeStr;
+        std::string scoreText = "Score" + levelStr + " " + std::to_string(score) + " Time: " + timeStr;
         drawStyledText(250, screenHeight - 250, scoreText.c_str(), GLUT_BITMAP_TIMES_ROMAN_24, true);
-
-
 
 
         iSetColor(135, 206, 235);
@@ -1329,11 +1328,14 @@ case LEVEL_SELECT: {
         }
         iShowLoadedImage((int)ground_x, 0, &groundImage);
         iShowLoadedImage((int)ground_x + screenWidth, 0, &groundImage);
-       std::string scoreStr = "Score: " + std::to_string(score);
+       std::string scoreStr = "\nScore: " + std::to_string(score);
     std::string modeStr = "Mode: " + std::string(currentDifficulty == HARD ? "Hard" : currentDifficulty == MEDIUM ? "Medium" : "Easy");
+     
+    iSetColor(0, 0, 0);
 
-    drawStyledText(50, screenHeight - 250, scoreStr.c_str(), GLUT_BITMAP_TIMES_ROMAN_24, true);
-    drawStyledText(50, screenHeight - 290, modeStr.c_str(), GLUT_BITMAP_TIMES_ROMAN_24, true);
+    iText(50, screenHeight-100 , "PRESS P TO PAUSE/RESUME", GLUT_BITMAP_HELVETICA_12);
+    drawStyledText(50, screenHeight - 130, scoreStr.c_str(), GLUT_BITMAP_TIMES_ROMAN_24, true);
+    drawStyledText(50, screenHeight - 190, modeStr.c_str(), GLUT_BITMAP_TIMES_ROMAN_24, true);
 
      
 
